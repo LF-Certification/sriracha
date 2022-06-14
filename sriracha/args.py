@@ -1,7 +1,6 @@
 import sys
 import argparse
 
-
 """
   Given a dict of accepted_arguments, builds options using argparse, if --use-samples is given, defaults will be used (good for testing).
 
@@ -14,14 +13,12 @@ import argparse
 """
 
 
-def fetch(accepted_arguments: dict) -> dict, str:
+def fetch(accepted_arguments: dict) -> tuple:
     gathered_args = {}
     parser = argparse.ArgumentParser()
     parser.add_argument("--debug", action=argparse.BooleanOptionalAction)
     parser.add_argument("--use-samples", action=argparse.BooleanOptionalAction)
-    parser.add_argument(
-        "--phase", action=argparse.BooleanOptionalAction, default="grade"
-    )
+    parser.add_argument("--phase", default="grade", type=str)
 
     for k, v in accepted_arguments.items():
         parser.add_argument(f"--{k}", type=v["type"])
@@ -42,7 +39,9 @@ def fetch(accepted_arguments: dict) -> dict, str:
     else:
         gathered_args = vars(args)
 
+    phase = gathered_args["phase"]
+
     del gathered_args["use_samples"]
     del gathered_args["phase"]
 
-    return gathered_args, args.phase
+    return gathered_args, phase

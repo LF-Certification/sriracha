@@ -13,7 +13,7 @@ def test_fetch():
 
     sys.argv.append("--use-samples")
     sys.argv.append("--debug")
-    fetched_args = args.fetch(accepted_arguments)
+    fetched_args, phase = args.fetch(accepted_arguments)
 
     assert 65535 == fetched_args["hard_limit"]
     assert "james" == fetched_args["username"]

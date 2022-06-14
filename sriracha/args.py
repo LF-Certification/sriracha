@@ -14,7 +14,7 @@ import argparse
 """
 
 
-def fetch(accepted_arguments: dict) -> dict:
+def fetch(accepted_arguments: dict) -> dict, str:
     gathered_args = {}
     parser = argparse.ArgumentParser()
     parser.add_argument("--debug", action=argparse.BooleanOptionalAction)
@@ -43,5 +43,6 @@ def fetch(accepted_arguments: dict) -> dict:
         gathered_args = vars(args)
 
     del gathered_args["use_samples"]
+    del gathered_args["phase"]
 
-    return gathered_args
+    return gathered_args, args.phase

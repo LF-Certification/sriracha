@@ -19,6 +19,9 @@ def fetch(accepted_arguments: dict) -> dict:
     parser = argparse.ArgumentParser()
     parser.add_argument("--debug", action=argparse.BooleanOptionalAction)
     parser.add_argument("--use-samples", action=argparse.BooleanOptionalAction)
+    parser.add_argument(
+        "--phase", action=argparse.BooleanOptionalAction, default="grade"
+    )
 
     for k, v in accepted_arguments.items():
         parser.add_argument(f"--{k}", type=v["type"])

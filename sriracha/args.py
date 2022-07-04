@@ -19,7 +19,7 @@ def fetch(accepted_arguments: dict) -> tuple:
     parser = argparse.ArgumentParser()
     parser.add_argument("--debug", action=argparse.BooleanOptionalAction)
     parser.add_argument("--use-samples", action=argparse.BooleanOptionalAction)
-    parser.add_argument("--phase", default="grade", type=str)
+    parser.add_argument("--phase", default="setup", type=str)
 
     for k, v in accepted_arguments.items():
         parser.add_argument(f"--{k}", type=v["type"])

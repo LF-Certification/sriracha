@@ -2,7 +2,8 @@ import sys
 import argparse
 
 """
-  Given a dict of accepted_arguments, builds options using argparse, if --use-samples is given, defaults will be used (good for testing).
+  Given a dict of accepted_arguments, builds options using argparse, if
+  --use-samples is given, defaults will be used (good for testing).
 
   Example accepted_arguments:
 

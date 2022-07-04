@@ -26,6 +26,7 @@ def fetch(accepted_arguments: dict) -> tuple:
 
     args = parser.parse_args()
 
+    gathered_args = vars(args)
     if args.use_samples:
         for k, v in accepted_arguments.items():
             if vars(args)[k]:
@@ -34,11 +35,7 @@ def fetch(accepted_arguments: dict) -> tuple:
                 )
                 sys.exit(1)
 
-            gathered_args = vars(args)
             gathered_args[k] = v["sample_value"]
-
-    else:
-        gathered_args = vars(args)
 
     phase = gathered_args["phase"]
 

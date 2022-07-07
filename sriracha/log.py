@@ -1,18 +1,42 @@
 import logging
-import os
+import logging.config
+from functools import lru_cache
+
+
+#
+# Memoized to avoid unnecessary reloads
+#
+# See: lru_cache <https://docs.python.org/3/library/functools.html#functools.lru_cache>
+#
+@lru_cache
+def load_config() -> None:
+    config_dict = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "simple": {
+                "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            }
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "level": "DEBUG",
+                "formatter": "simple",
+                "stream": "ext://sys.stderr",
+            }
+        },
+        "root": {
+            "level": "INFO",
+            "handlers": [
+                "console",
+            ],
+        },
+    }
+
+    logging.config.dictConfig(config_dict)
 
 
 def get_logger(name="sriracha"):
-    log = logging.getLogger(name)
-    log.setLevel(level=logging.INFO)
-
-    # create formatter and add it to the handlers
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-
-    ch = logging.StreamHandler()
-    ch.setFormatter(formatter)
-
-    log.addHandler(ch)
-    return log
+    load_config()
+    return logging.getLogger(name)

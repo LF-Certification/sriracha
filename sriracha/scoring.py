@@ -1,5 +1,8 @@
 import json
 
+global CHECK_RESULTS
+CHECK_RESULTS = {}
+
 # This decorator should be used to decorate all checks.
 def check(func):
     def inner(*args, **kwargs):

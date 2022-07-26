@@ -27,7 +27,7 @@ def group_exists(groupname):
     return False
 
 
-def check_passwd(username, expected_passwd):
+def password_is_equal_to(username, expected_passwd):
     """Checks user passwd"""
     try:
         password = spwd.getspnam(username).sp_pwdp

@@ -5,7 +5,7 @@ import spwd
 import subprocess
 import sys
 
-def is_user_exists(username):
+def user_exist(username):
     """Checks User existence"""
     try:
         pwd.getpwnam(username)
@@ -16,7 +16,7 @@ def is_user_exists(username):
     return False
 
 
-def is_group_exists(groupname):
+def group_exist(groupname):
     """Checks group existence"""
     try:
         grp.getgrnam(groupname)

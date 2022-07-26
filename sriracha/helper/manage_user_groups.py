@@ -38,7 +38,7 @@ def check_passwd(username, expected_passwd):
     return False
 
 
-def check_gid(groupname, expected_gid):
+def groupname_equals_gid(groupname, expected_gid):
     """Checks groupid for groupname"""
     actual_gid = None
     try:
@@ -65,7 +65,7 @@ def user_in_group(groupname, username):
     return False
 
 
-def check_user_primary_grp(groupname, username):
+def check_user_primary_group(groupname, username):
     """Checks primary group of the user"""
     p_gid = None
     actual_grp_name = None
@@ -100,6 +100,3 @@ def user_shell_is_not_interactive(username):
         log.info("Failed to get the user shell for %s", username)
 
     return False
-
-
-

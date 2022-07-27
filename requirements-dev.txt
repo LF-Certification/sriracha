@@ -1,5 +1,5 @@
 behave==1.2.6
-ipython==7.26.0
+ipython==8.4.0
 ipython-genutils==0.2.0
 pytest==7.1.2
 pre-commit==2.20.0

@@ -15,3 +15,8 @@ lint: envsetup
 	@# Tee-ing to .pre-commit.out allows the CI pipeline to extract
 	@# any relevant error messages and post to a github PR.
 	bash -eo pipefail -c "./.venv/bin/pre-commit run --files ./scripts/*.* ./* | tee .pre-commit.out"
+
+test: envsetup
+	@# Tee-ing to .pre-commit.out allows the CI pipeline to extract
+	@# any relevant error messages and post to a github PR.
+	bash -eo pipefail -c "./.venv/bin/pytest"

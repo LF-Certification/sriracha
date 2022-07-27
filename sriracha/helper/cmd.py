@@ -2,12 +2,14 @@ import subprocess
 import os
 import pwd
 
+
 def demote(user_uid, user_gid):
     def result():
         os.setgid(user_gid)
         os.setuid(user_uid)
 
     return result
+
 
 def exec_cmd(command: str, user: str = ""):
 
@@ -31,5 +33,4 @@ def exec_cmd(command: str, user: str = ""):
     else:
         proc = subprocess.run([command], shell=True, stdout=subprocess.PIPE, check=True)
 
-    return proc.returncode
-    
+    return proc

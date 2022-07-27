@@ -1,0 +1,53 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: .copier-answers.yml
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: pretty-format-json
+        # VS Code uses JSONC, pretty-format-json does not support JSON with comments
+        exclude: .vscode/settings.json
+        args: [--autofix, --no-ensure-ascii, --no-sort-keys]
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+        # VS Code uses JSONC, check-json does not support JSON with comments
+        exclude: .vscode/settings.json
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.26.3
+    hooks:
+      - id: yamllint
+        exclude: .copier-answers.yml
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+  # The pre-commit author recommends that Pylint run as a "local" hook, to access imports
+  # https://stackoverflow.com/a/61238571
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          [
+            "-rn", # Only display messages
+            --fail-under=10
+          ]

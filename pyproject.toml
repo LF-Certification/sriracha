@@ -4,8 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sriracha"
-version = "0.0.11"
-dynamic = ["readme"]
+dynamic = ["readme", "version"]
 
 [tool.setuptools.dynamic]
 readme = { file = ["README.md"] }

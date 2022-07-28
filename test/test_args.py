@@ -1,6 +1,6 @@
 import pytest
 
-from sriracha import args
+from src.sriracha import args
 
 
 def test_fetch():

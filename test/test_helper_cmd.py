@@ -1,4 +1,4 @@
-from sriracha.helper import cmd
+from src.sriracha.helper import cmd
 
 
 def test_answer():

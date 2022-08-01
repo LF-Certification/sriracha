@@ -11,8 +11,13 @@ def demote(user_uid, user_gid):
     return result
 
 
-def exec_cmd(command: str, user: str = ""):
+def exec_cmd(command: str, user: str = "", check=False) -> subprocess.CompletedProcess:
+    """Executes commands on behalf of uids
 
+    :check: Toggle the "check" behavior or subprocess.run, raises error on non-zero return code.
+    :returns:
+
+    """
     # Run the command as the specified user.
     if user:
         # get user info from username
@@ -26,11 +31,13 @@ def exec_cmd(command: str, user: str = ""):
             [command],
             shell=True,
             env=env,
-            check=True,
+            check=check,
             preexec_fn=demote(user_uid, user_gid),
             stdout=subprocess.PIPE,
         )
     else:
-        proc = subprocess.run([command], shell=True, stdout=subprocess.PIPE, check=True)
+        proc = subprocess.run(
+            [command], shell=True, stdout=subprocess.PIPE, check=check
+        )
 
     return proc

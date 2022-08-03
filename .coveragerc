@@ -8,7 +8,7 @@
 #       report configuration section below.
 omit =
   setup.py
-  tests/*
+  test/*
 
 
 # Global report options

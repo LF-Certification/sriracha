@@ -1,0 +1,14 @@
+---
+version: 2.1
+
+setup: true
+
+orbs:
+  pipeline: lf-certification/package-delivery-pipeline@1
+
+workflows:
+  setup:
+    jobs:
+      - pipeline/setup_python:
+          coverage_reporter_circleci_context: ci-bot-lf1
+          unit_test_circleci_context: ci-bot-lf1

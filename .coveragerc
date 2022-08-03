@@ -1,0 +1,35 @@
+# See: `coverage --help`
+# See: https://coverage.readthedocs.io/en/latest/config.html
+[run]
+# Skip these files from coverage measurement
+#
+# NOTE: To ensure that all reports are showing the same information,
+#       use this option and avoid using the "omit" option in specific
+#       report configuration section below.
+omit =
+  setup.py
+  tests/*
+
+
+# Global report options
+[report]
+# Don't report on empty files
+skip_empty = True
+
+# Show the line numbers that weren't executed by the tests
+show_missing = True
+
+
+# HTML report options
+[html]
+# Title to use in the HTML report
+title = Sriracha (Oooo, spicyyyy!!!)
+
+# Where to write the HTML coverage report
+directory = test-results/htmlcov
+
+
+# XML report options
+[xml]
+# Where to write the XML coverage report
+output = test-results/coverage.xml

@@ -11,7 +11,7 @@ def demote(user_uid, user_gid):
     return result
 
 
-def exec_cmd(command: str, user: str = "", check=False) -> subprocess.CompletedProcess:
+def exec_cmd(command: str, user: str = "", check=True) -> subprocess.CompletedProcess:
     """Executes commands on behalf of uids
 
     :check: Toggle the "check" behavior or subprocess.run, raises error on non-zero return code.
